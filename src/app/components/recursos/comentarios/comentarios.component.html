@@ -1,0 +1,60 @@
+<div class="container">
+    <div class="post-comments">
+        <header>
+            <a data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false"
+                aria-controls="collapseExample">
+                <h3 class="h6">Comentarios<span class="no-of-comments">({{comentarios.length}})</span></h3>
+            </a>
+        </header>
+        <div class="post-comments collapse" id="collapseExample">
+            <div class="comment" *ngFor="let coment of comentarios">
+                <div class="comment-header d-flex justify-content-between">
+                    <div class="user d-flex align-items-center">
+                        <div class="title">
+                            <strong>{{coment.creador}} <span class="date">| {{coment.fechacreacion | date:
+                                    'mediumDate'}}</span></strong>
+                            <div class="comment-body">
+                                <p>{{coment.comentario}}</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="add-comment">
+            <header>
+                <h3 class="h6">Escribe algo acerca del post</h3>
+            </header>
+            <form [formGroup]="formComentario" (ngSubmit)="guardarComentario($event)" class="commenting-form"
+                novalidate>
+                <div class="row">
+                    <div class="form-group col-md-6">
+                        <input type="text" formControlName="creador" placeholder="Nombre" class="form-control">
+                        <div *ngIf="formComentario.get('creador').errors && formComentario.get('creador').touched">
+                            <p *ngIf="formComentario.get('creador').hasError('required')" class="error">
+                                Este campo es requerido.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="form-group col-md-6">
+                        <input type="email" formControlName="email" placeholder="Correo electronico (no se mostrará)"
+                            class="form-control">
+                    </div>
+                    <div class="form-group col-md-12">
+                        <textarea formControlName="comentario" placeholder="Escribe tu comentario"
+                            class="form-control"></textarea>
+                        <div
+                            *ngIf="formComentario.get('comentario').errors && formComentario.get('comentario').touched">
+                            <p *ngIf="formComentario.get('comentario').hasError('required')" class="error">
+                                Este campo es requerido.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="form-group col-md-12">
+                        <button type="submit" class="btn btn-secondary">Guardar comentario</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

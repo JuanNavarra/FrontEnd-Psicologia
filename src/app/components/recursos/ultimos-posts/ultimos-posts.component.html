@@ -1,0 +1,17 @@
+<div class="widget latest-posts">
+    <header>
+        <h3 class="h6">Ultimos Posts</h3>
+    </header>
+    <div *ngFor="let reciente of recientes" class="blog-posts">
+        <a [routerLink]="['/blog/entrada',reciente.slug]" (click)="obtenerSlugPost(reciente.slug)">
+            <div class="item d-flex align-items-center">
+                <div class="image"><img src="{{reciente.imagen}}" alt="..." class="img-fluid"></div>
+                <div class="title"><strong>{{reciente.titulo}}</strong>
+                    <div class="d-flex align-items-center">
+                        <div class="comments">{{reciente.fechaCreacion | date: 'mediumDate'}}</div>
+                    </div>
+                </div>
+            </div>
+        </a>
+    </div>
+</div>
