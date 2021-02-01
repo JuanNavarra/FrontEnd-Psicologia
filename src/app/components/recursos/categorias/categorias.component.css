@@ -1,0 +1,5 @@
+div.categorias-scroll{
+    width: 100%;
+    height: 20%;
+    overflow: auto;
+  }

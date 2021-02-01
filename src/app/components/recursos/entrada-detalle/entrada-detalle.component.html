@@ -3,8 +3,11 @@
         <main class="post blog-post col-lg-8">
             <div class="container">
                 <div class="post-single">
-                    <div class="post-thumbnail"><img src="{{entrada.imagenPost}}" alt="..." class="img-fluid"></div>
+                    <div class="post-thumbnail" *ngIf="entrada.imagenPost != null"><img src="{{entrada.imagenPost}}" alt="..." class="img-fluid"></div>
                     <div class="post-details">
+                        <span class="badge badge-pill badge-light">
+                            <h5>Categoría de: {{entrada.categoria}}</h5>
+                        </span>
                         <div class="post-meta d-flex justify-content-between">
                             <div class="category"><a *ngFor="let kw of entrada.keyWords" href="#"
                                     class="tag">#{{kw.nombre}}</a></div>
@@ -12,11 +15,13 @@
                         <h1>{{entrada.titulo}}<a href="#"><i class="fa fa-bookmark-o"></i></a></h1>
                         <div class="post-footer d-flex align-items-center flex-column flex-sm-row"><a href="#"
                                 class="author d-flex align-items-center flex-wrap">
-                                <div class="avatar"><img src="{{entrada.imagenCreador}}" alt="..." class="img-fluid"></div>
+                                <div class="avatar"><img src="{{entrada.imagenCreador}}" alt="..." class="img-fluid">
+                                </div>
                                 <div class="title"><span>{{entrada.creador}}</span></div>
                             </a>
                             <div class="d-flex align-items-center flex-wrap">
-                                <div class="date"><i class="icon-clock"></i> {{entrada.fechaCreacion | date: 'mediumDate'}}</div>
+                                <div class="date"><i class="icon-clock"></i> {{entrada.fechaCreacion | date:
+                                    'mediumDate'}}</div>
                             </div>
                         </div>
                         <div class="post-body">
@@ -35,21 +40,26 @@
                 <div class="posts-nav d-flex justify-content-between align-items-stretch flex-column flex-md-row">
                     <a routerLink="/blog" class="prev-post text-left d-flex align-items-center">
                         <div class="icon prev"><i class="fa fa-angle-left"></i></div>
-                        <div class="text"><strong class="text-primary"><h6>Quiero ver todos los posts.</h6></strong></div>
+                        <div class="text"><strong class="text-primary">
+                                <h6>Quiero ver todos los posts.</h6>
+                            </strong></div>
                     </a>
                 </div>
             </div>
             <app-comentarios 
-                [comentarios]="comentarios"
+                [comentarios]="comentarios" 
                 [slug]="slug">
             </app-comentarios>
         </main>
         <aside class="col-lg-4">
-            <app-busqueda></app-busqueda>
+            <app-busqueda 
+                (slug)="recibeEntrada($event)">
+            </app-busqueda>
             <app-ultimos-posts 
-                (slug)="recibeEntrada($event)"
+                (slug)="recibeEntrada($event)" 
                 (slug)="recibirComentarios($event)">
             </app-ultimos-posts>
+            <app-categorias></app-categorias>
         </aside>
     </div>
 </div>

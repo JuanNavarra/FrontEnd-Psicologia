@@ -1,0 +1,8 @@
+.seguir-leyendo{
+    color: tomato;
+}
+.seguir-leyendo:hover{
+    background-color: tomato;
+    color: white;
+    border-radius: 5%;
+}

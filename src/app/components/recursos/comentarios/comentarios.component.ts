@@ -2,6 +2,7 @@ import { Component, Input, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
 import { Comentarios } from 'src/app/models/comentarios';
+import { ErrorHttpCliente } from 'src/app/models/errorHttpCliente';
 import { BlogService } from 'src/app/service/recursos/blog.service';
 
 @Component({
@@ -26,6 +27,7 @@ export class ComentariosComponent implements OnInit {
   ngOnInit(): void {
     this.blogService.listarComentarios(this.slug).subscribe(data => {
       this.comentarios = data;
+    }, (error: ErrorHttpCliente) => {
     })
   }
 
@@ -35,7 +37,7 @@ export class ComentariosComponent implements OnInit {
       comentario: [null, [Validators.required]],
       email: [null, []],
       slug: [this.slug, []],
-      fechacreacion: [new Date() , []],
+      fechacreacion: [new Date(), []],
     });
   }
 
@@ -44,15 +46,15 @@ export class ComentariosComponent implements OnInit {
     this.formComentario.value.slug = this.slug;
     if (this.formComentario.valid) {
       this.blogService.guardarComentario(this.formComentario.value).subscribe(data => {
-        if(data.estado){
+        if (data.estado) {
           this.toast.success(data.mensaje);
           this.comentarios.unshift(this.formComentario.value)
           this.builderForm();
-        }else
+        } else
           this.toast.error(data.mensaje);
       });
     } else {
-      console.log("error")
+      this.toast.warning("Los campos: Nombre y Comentario son requeridos");
     }
   }
 }

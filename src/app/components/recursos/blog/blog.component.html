@@ -5,33 +5,43 @@
             <div class="container">
                 <div class="row">
                     <!-- post -->
-                    <div class="post col-xl-6" *ngFor="let entrada of entradas">
-                        <div class="post-thumbnail"><a [routerLink]="['/blog/entrada',entrada.slug]"><img src="{{entrada.imagenPost}}" alt="..."
-                                    class="img-fluid"></a></div>
+                    <div class="post col-xl-6" *ngFor="let entrada of entradas | paginate: { itemsPerPage: 6, currentPage: page }">
+                        <div class="post-thumbnail">
+                            <a [routerLink]="['/blog/entrada',entrada.slug]">
+                                <img *ngIf="entrada.imagenPost != null" src="{{entrada.imagenPost}}"
+                                    class="img-fluid"></a>
+                        </div>
                         <div class="post-details">
                             <div class="post-meta d-flex justify-content-between">
                                 <div class="date meta-last">{{entrada.fechaCreacion | date:'mediumDate'}}</div>
-                                <div class="category"><a *ngFor="let kw of entrada.keyWords">{{kw.nombre}}</a></div>
+                                <div class="category"><a *ngFor="let kw of entrada.keyWords">#{{kw.nombre}}</a></div>
                             </div><a [routerLink]="['/blog/entrada',entrada.slug]">
                                 <h3 class="h4">{{entrada.titulo}}</h3>
                             </a>
                             <p class="text-muted">{{entrada.subTitulo}}</p>
                             <footer class="post-footer d-flex align-items-center"><a href="#"
                                     class="author d-flex align-items-center flex-wrap">
-                                    <div class="avatar"><img src="{{entrada.imagenCreador}}" alt="..." class="img-fluid"></div>
+                                    <div class="avatar"><img *ngIf="entrada.imagenCreador != null"
+                                            src="{{entrada.imagenCreador}}" class="img-fluid"></div>
                                     <div class="title"><span>{{entrada.creador}}</span></div>
                                 </a>
-                                <div class="date"><i class="icon-clock"></i> 2 months ago</div>
+                                <div class="date">{{entrada.categoria}}</div>
                             </footer>
                         </div>
                     </div>
                 </div>
-                <app-paginacion></app-paginacion>
+                <pagination-controls 
+                    (pageChange)="page = $event"
+                    responsive="true"
+                    previousLabel="Anterior"
+                    nextLabel="Siguiente">
+                </pagination-controls>
             </div>
         </main>
         <aside class="col-lg-4 bottomMenu">
             <app-busqueda></app-busqueda>
             <app-ultimos-posts></app-ultimos-posts>
+            <app-categorias></app-categorias>
         </aside>
     </div>
 </div>

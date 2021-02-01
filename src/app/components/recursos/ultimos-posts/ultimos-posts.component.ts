@@ -19,7 +19,7 @@ export class UltimosPostsComponent implements OnInit {
     })
   }
 
-  obtenerSlugPost(slug: string): void {
+  public obtenerSlugPost(slug: string): void {
     this.slug.emit(slug);
   }
 }

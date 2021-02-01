@@ -1,0 +1,24 @@
+  .busqueda {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+  }
+  
+  .busqueda li a {
+    margin-top: -1px; /* Prevent double borders */
+    padding: 6px;
+    text-decoration: none;
+    color: black;
+    border-left: solid #eee;
+    border-right: solid #eee;
+    border-bottom: solid #eee;
+    display: block
+  }
+  
+  .busqueda li a:hover:not(.header) {
+    background-color: #eee;
+  }
+
+  * {
+    box-sizing: border-box;
+  }

@@ -1,0 +1,12 @@
+<div class="container faqs">
+    <div class="card">
+        <div class="card-header text-center">
+            <h2>{{faqs.titulo}}</h2>
+        </div>
+        <div class="card-body text-justify" *ngFor="let detalle of faqs.detalle">
+            <h5 class="card-title">{{detalle.titulo}}</h5>
+            <p class="card-text">{{detalle.contenido}}
+            </p>
+        </div>
+    </div>
+</div>

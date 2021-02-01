@@ -1,0 +1,12 @@
+footer.main-footer .copyrights {
+    background: #090909;
+    margin-top: 0px;
+    padding: 20px 0;
+    font-size: 0.9em;
+}
+
+footer.main-footer {
+    background: #0e0e0e;
+    padding: 38px 0 0;
+    color: #fff;
+}

@@ -7,7 +7,6 @@ import { HeaderComponent } from './components/header/header.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { PrincipalComponent } from './components/principal/principal.component';
 import { BlogComponent } from './components/recursos/blog/blog.component';
-import { PaginacionComponent } from './components/recursos/paginacion/paginacion.component';
 import { BusquedaComponent } from './components/recursos/busqueda/busqueda.component';
 import { UltimosPostsComponent } from './components/recursos/ultimos-posts/ultimos-posts.component';
 import { HttpClientModule } from '@angular/common/http';
@@ -17,6 +16,11 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { FormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastrModule } from 'ngx-toastr';
+import { FaqsComponent } from './components/faqs/faqs.component';
+import { CategoriasComponent } from './components/recursos/categorias/categorias.component';
+import { DetalleCategoriasComponent } from './components/recursos/detalle-categorias/detalle-categorias.component';
+import {NgxPaginationModule} from 'ngx-pagination';
+import { NotFoundComponent } from './components/not-found/not-found.component';
 
 @NgModule({
   declarations: [
@@ -25,15 +29,19 @@ import { ToastrModule } from 'ngx-toastr';
     FooterComponent,
     PrincipalComponent,
     BlogComponent,
-    PaginacionComponent,
     BusquedaComponent,
     UltimosPostsComponent,
     EntradaDetalleComponent,
-    ComentariosComponent
+    ComentariosComponent,
+    FaqsComponent,
+    CategoriasComponent,
+    DetalleCategoriasComponent,
+    NotFoundComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
+    NgxPaginationModule,
     HttpClientModule,
     ReactiveFormsModule,
     FormsModule,

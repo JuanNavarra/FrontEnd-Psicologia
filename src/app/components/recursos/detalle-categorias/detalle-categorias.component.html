@@ -1,0 +1,40 @@
+<div class="container">
+    <section class="featured-posts padding-top">
+        <h3 style="margin-bottom: 4%;">Resultados de la búsqueda para:
+            <span class="badge badge-pill badge-info">
+                {{categoria.toLowerCase()}}
+            </span>
+        </h3>
+        <div class="container">
+            <div class="row d-flex align-items-stretch"
+                *ngFor="let categoria of categorias | paginate: { itemsPerPage: 3, currentPage: page }">
+                <div class="text col-lg-12">
+                    <div class="text-inner d-flex align-items-center">
+                        <div class="content">
+                            <header class="post-header">
+                                <div class="category"><a href="#" *ngFor="let i of categoria.keyWords">#{{i.nombre}}</a>
+                                </div>
+                                <h1 class="h4">{{categoria.titulo}}</h1>
+                            </header>
+                            <p>{{categoria.subTitulo}}</p>
+                            <p>{{categoria.descripcion}}... <a class="seguir-leyendo"
+                                    [routerLink]="['/blog/entrada',categoria.slug]">Seguir leyendo</a></p>
+                            <footer class="post-footer d-flex align-items-center"><a href="#"
+                                    class="author d-flex align-items-center flex-wrap">
+                                    <div class="avatar"><img src="{{categoria.imagenCreador}}" alt="..."
+                                            class="img-fluid"></div>
+                                    <div class="title"><span>{{categoria.creador}}</span></div>
+                                </a>
+                                <div class="date"><i class="icon-clock"></i> {{categoria.fechaCreacion |
+                                    date:'mediumDate'}}</div>
+                            </footer>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <pagination-controls (pageChange)="page = $event" responsive="true" previousLabel="Anterior"
+                nextLabel="Siguiente">
+            </pagination-controls>
+        </div>
+    </section>
+</div>

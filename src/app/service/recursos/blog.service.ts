@@ -1,10 +1,13 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { HttpClient, HttpErrorResponse } from '@angular/common/http';
+import { Observable, throwError } from 'rxjs';
 import { Entradas } from 'src/app/models/entradas';
 import { Recientes } from 'src/app/models/recientes';
 import { Comentarios } from 'src/app/models/comentarios';
 import { catchError } from 'rxjs/operators';
+import { Busqueda } from 'src/app/models/busqueda';
+import { Categorias } from 'src/app/models/categorias';
+import { ErrorHttpCliente } from 'src/app/models/errorHttpCliente';
 
 @Injectable({
   providedIn: 'root'
@@ -20,19 +23,47 @@ export class BlogService {
 
   constructor(private http: HttpClient) { }
 
-  obtenerEntradas(): Observable<Entradas[]> {
+  public obtenerEntradas(): Observable<Entradas[]> {
     return this.http.get<Entradas[]>(`${this.url}blogs-psicologia`);
   }
-  obtenerEntradaPorSlug(slug: string): Observable<Entradas>{
-    return this.http.get<Entradas>(`${this.url}blog-entrada/${slug}`)
+
+  public obtenerEntradaPorSlug(slug: string): Observable<Entradas> {
+    return this.http
+      .get<Entradas>(`${this.url}blog-entrada/${slug}`)
+      .pipe(
+        catchError(error => {
+          let errorMsg: ErrorHttpCliente = new ErrorHttpCliente();
+          if (error.error instanceof ErrorEvent) {
+            errorMsg.error = error.status;
+          } else {
+            errorMsg = this.getServerErrorMessage(error);
+          }
+          return throwError(errorMsg);
+        })
+      );
   }
-  obtenerRecientes(): Observable<Recientes[]>{
+
+  public obtenerRecientes(): Observable<Recientes[]> {
     return this.http.get<Recientes[]>(`${this.url}ultimos-post`)
   }
-  listarComentarios(slug: string): Observable<Comentarios[]>{
-    return this.http.get<Comentarios[]>(`${this.url}comentarios-post/${slug}`)
+
+  public listarComentarios(slug: string): Observable<Comentarios[]> {
+    return this.http
+      .get<Comentarios[]>(`${this.url}comentarios-post/${slug}`)
+      .pipe(
+        catchError(error => {
+          let errorMsg: ErrorHttpCliente = new ErrorHttpCliente();
+          if (error.error instanceof ErrorEvent) {
+            errorMsg.error = error.status;
+          } else {
+            errorMsg = this.getServerErrorMessage(error);
+          }
+          return throwError(errorMsg);
+        })
+      );
   }
-  guardarComentario(comentario: Comentarios): Observable<Comentarios> {
+
+  public guardarComentario(comentario: Comentarios): Observable<Comentarios> {
     return this.http.
       post<Comentarios>(`${this.url}guardar-comentario`, comentario, this.httpOptions)
       .pipe(
@@ -40,5 +71,43 @@ export class BlogService {
           throw 'error in source. Details: ' + err;
         })
       );
+  }
+
+  public buscarPost(busqueda: string): Observable<Busqueda[]> {
+    return this.http.get<Busqueda[]>(`${this.url}buscar-post/${busqueda}`)
+      .pipe(
+        catchError(err => {
+          throw 'error in source. Details: ' + err;
+        })
+      );
+  }
+
+  public listarCategorias(): Observable<Categorias[]> {
+    return this.http.get<Categorias[]>(`${this.url}listar-categorias`);
+  }
+
+  public listarCategoriaDetalle(categoria: string): Observable<Entradas[]> {
+    return this.http.get<Entradas[]>(`${this.url}listar-detalle-categorias/${categoria}`)
+  }
+
+  private getServerErrorMessage(error: HttpErrorResponse): ErrorHttpCliente {
+    const errores: ErrorHttpCliente = new ErrorHttpCliente();
+    errores.mensaje = error.message;
+    errores.error = error.status;
+    switch (error.status) {
+      case 404: {
+        return errores;
+      }
+      case 403: {
+        return errores;
+      }
+      case 500: {
+        return errores;
+      }
+      default: {
+        return errores;
+      }
+
+    }
   }
 }

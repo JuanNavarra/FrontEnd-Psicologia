@@ -10,6 +10,7 @@ import { BlogService } from 'src/app/service/recursos/blog.service';
 export class BlogComponent implements OnInit {
 
   entradas: Entradas[] = [];
+  public page: number;
   constructor(private blogService: BlogService) { }
 
   ngOnInit(): void {
