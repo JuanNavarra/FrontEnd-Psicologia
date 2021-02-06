@@ -19,8 +19,9 @@ import { ToastrModule } from 'ngx-toastr';
 import { FaqsComponent } from './components/faqs/faqs.component';
 import { CategoriasComponent } from './components/recursos/categorias/categorias.component';
 import { DetalleCategoriasComponent } from './components/recursos/detalle-categorias/detalle-categorias.component';
-import {NgxPaginationModule} from 'ngx-pagination';
+import { NgxPaginationModule } from 'ngx-pagination';
 import { NotFoundComponent } from './components/not-found/not-found.component';
+
 
 @NgModule({
   declarations: [
@@ -46,7 +47,7 @@ import { NotFoundComponent } from './components/not-found/not-found.component';
     ReactiveFormsModule,
     FormsModule,
     BrowserAnimationsModule,
-    ToastrModule.forRoot()
+    ToastrModule.forRoot(),
   ],
   providers: [],
   bootstrap: [AppComponent]

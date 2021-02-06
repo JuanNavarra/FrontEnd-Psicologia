@@ -2585,3 +2585,9 @@ Bootstrap Temple Blog Template
     color: #1d2124 !important;
   }
   
+  .ngx-pagination {
+    text-align: center !important;
+}
+.ngx-pagination .current {
+  background: #2874a6 !important;
+}

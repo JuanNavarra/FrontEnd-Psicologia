@@ -1,0 +1,40 @@
+.portal:hover{
+    border-color: #3498db;
+    background-color: #3498db;
+    color: white;    
+}
+
+.portal{
+    border-color: #3498db;
+    background-color: white;
+    color: #3498db;
+}
+
+.color-header{
+    color:#2874a6 !important;
+}
+
+.dropdown-menu-header{
+    background-color: #3498db !important;
+}
+
+.dropdown-menu-header li a{
+    color: white;
+}
+
+.dropdown-menu-header :hover{
+    color: #3498db !important;
+}
+
+.dropdown-menu-header :hover{
+    background-color: white !important;
+}
+.navbar-estatica{
+    position: fixed;
+    width: 100%;
+}
+
+.navbar {
+    padding-top: 8px !important;
+    padding-bottom: 7px !important;
+}

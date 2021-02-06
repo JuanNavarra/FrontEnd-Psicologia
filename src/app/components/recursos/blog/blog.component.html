@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container-fluid">
     <div class="row">
         <!-- Latest Posts -->
         <main class="posts-listing col-lg-8">
@@ -8,12 +8,12 @@
                     <div class="post col-xl-6" *ngFor="let entrada of entradas | paginate: { itemsPerPage: 6, currentPage: page }">
                         <div class="post-thumbnail">
                             <a [routerLink]="['/blog/entrada',entrada.slug]">
-                                <img *ngIf="entrada.imagenPost != null" src="{{entrada.imagenPost}}"
+                                <img *ngIf="entrada.imagenPost != null" [src]="createImgPath(entrada.imagenPost)"
                                     class="img-fluid"></a>
                         </div>
                         <div class="post-details">
-                            <div class="post-meta d-flex justify-content-between">
-                                <div class="date meta-last">{{entrada.fechaCreacion | date:'mediumDate'}}</div>
+                            <div class="post-meta d-flex justify-content-between footer-entrada">
+                                <div class="date meta-last footer-entrada">{{entrada.fechaCreacion | date:'mediumDate'}}</div>
                                 <div class="category"><a *ngFor="let kw of entrada.keyWords">#{{kw.nombre}}</a></div>
                             </div><a [routerLink]="['/blog/entrada',entrada.slug]">
                                 <h3 class="h4">{{entrada.titulo}}</h3>

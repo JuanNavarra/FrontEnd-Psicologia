@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, HostListener, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-header',
@@ -7,9 +7,20 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HeaderComponent implements OnInit {
 
-  constructor() { }
+  classNameCss: string = "";
 
+  constructor() { }
+  
   ngOnInit(): void {
+    this.classNameCss = "";
   }
 
+  @HostListener('window:scroll', ['$event']) onScrollEvent($event: any) {
+    var y = window.scrollY;
+    if (y >= 15) {
+      this.classNameCss = "navbar-estatica"
+    } else {
+      this.classNameCss = ""
+    }
+  }
 }

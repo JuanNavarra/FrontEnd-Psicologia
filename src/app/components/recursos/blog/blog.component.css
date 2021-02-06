@@ -1,0 +1,19 @@
+.container-fluid {
+    width: 88% !important;
+}
+
+@media (min-width: 992px){
+    .col-lg-4 {
+        flex: 0 0 33.333333%; 
+        max-width: 30.333333% !important;
+        right: -37px !important;
+    }
+}
+
+.footer-entrada{
+    color: #3498db !important;
+}
+
+.h4{
+    color:#2874a6 !important;
+}

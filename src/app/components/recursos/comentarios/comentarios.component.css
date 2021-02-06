@@ -1,3 +1,9 @@
 .error{
     color: tomato !important;
 }
+
+.comentario-crear {
+    border-color: #3498db;
+    background-color: white;
+    color: #3498db;
+}

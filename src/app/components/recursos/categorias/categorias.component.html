@@ -1,8 +1,8 @@
 <div class="widget categories categorias-scroll">
     <header>
-        <h3 class="h6">Tambien puedes ver por categorías</h3>
+        <h3 class="h6">Categorías</h3>
     </header>
     <div class="item d-flex justify-content-between" *ngFor="let categoria of categorias">
-        <a [routerLink]="['/blog/categorias/',categoria.nombre.toLowerCase()]">{{categoria.nombre}}</a><span>{{categoria.cantidad}}</span>
+        <a [routerLink]="['/blog/categorias/',categoria.nombre.toLowerCase()]" class="title">{{categoria.nombre}}</a><span>{{categoria.cantidad}}</span>
     </div>
 </div>

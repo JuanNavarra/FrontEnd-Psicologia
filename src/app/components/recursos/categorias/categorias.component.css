@@ -1,5 +1,9 @@
 div.categorias-scroll{
     width: 100%;
-    height: 20%;
+    height: 24%;
     overflow: auto;
   }
+
+.title{
+  color:#2874a6 !important;
+}

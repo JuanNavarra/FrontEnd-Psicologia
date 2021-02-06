@@ -1,10 +1,11 @@
+import { SafeHtml } from "@angular/platform-browser";
 import { KeyWords } from "./keyWords";
 
 export class Entradas {
     slug: string;
     titulo: string;
     subTitulo: string;
-    descripcion: string;
+    descripcion: SafeHtml;
     cita: string;
     autorCita: string;
     fechaCreacion: Date;

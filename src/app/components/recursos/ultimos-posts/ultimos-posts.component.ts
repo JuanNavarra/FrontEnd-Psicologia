@@ -22,4 +22,8 @@ export class UltimosPostsComponent implements OnInit {
   public obtenerSlugPost(slug: string): void {
     this.slug.emit(slug);
   }
+
+  public createImgPath = (serverPath: string) => {
+    return `https://localhost:44329/${serverPath}`;
+  }
 }

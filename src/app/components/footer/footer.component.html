@@ -2,56 +2,27 @@
   <div class="container">
     <div class="row">
       <div class="col-md-4">
-        <div class="logo">
-          <h6 class="text-white">Bootstrap Blog</h6>
-        </div>
         <div class="contact-details">
-          <p>53 Broadway, Broklyn, NY 11249
-          Phone: (020) 123 456 789
-          Email: <a href="mailto:info@company.com">Info@Company.com</a></p>
+          <p><br>&copy; {{fechaActual | date: 'yyyy'}}. Todos los derechos reservados. Programado por Juan Navarra</p>
         </div>
       </div>
       <div class="col-md-4">
         <div class="menus d-flex">
-          <ul class="list-unstyled">
-            <li> <a href="#">Nosotros</a></li>
-            <li> <a routerLink="faqs">Faqs</a></li>
+          <ul class="list-unstyled texto-ayuda">
+            <h6 class="text-white">Síguenos</h6>
+            <li> <a routerLink="Instagram">Tweeter</a></li>
+            <li> <a routerLink="Instagram">LinkedIn</a></li>
+            <li> <a routerLink="Instagram">Instagram</a></li>
           </ul>
         </div>
       </div>
       <div class="col-md-4">
-        <div class="latest-posts">
-          <a href="#">
-            <div class="post d-flex align-items-center">
-              <div class="image"><img src="#" class="img-fluid">
-              </div>
-            </div>
-          </a>
-          <a href="#">
-            <div class="post d-flex align-items-center">
-              <div class="image"><img src="#" class="img-fluid">
-              </div>
-            </div>
-          </a>
-          <a href="#">
-            <div class="post d-flex align-items-center">
-              <div class="image"><img src="#" class="img-fluid">
-              </div>
-            </div>
-          </a>
-        </div>
-      </div>
-    </div>
-    <div class="copyrights">
-      <div class="container">
-        <div class="row">
-          <div class="col-md-6">
-            <p>&copy; {{fechaActual | date: 'yyyy'}}. Todos los derechos reservados.</p>
-          </div>
-          <div class="col-md-6 text-right">
-            <p>Programado por Juan Navarra
-            </p>
-          </div>
+        <div class="menus d-flex">
+          <ul class="list-unstyled texto-ayuda">
+            <h6 class="text-white">Conócenos</h6>
+            <li> <a routerLink="/quienes-somos">Quiénes somos</a></li>
+            <li> <a routerLink="/contacto">Contácta con nosotros</a></li>
+          </ul>
         </div>
       </div>
     </div>

@@ -1,0 +1,41 @@
+.badge-light {
+    color: white;
+    background-color:#2874a6 !important;
+}
+
+.categoria-entrada{
+    margin-bottom: 0.5px !important;
+}
+
+.title-entrada{
+    color: #2874a6 !important;
+}
+
+.lead{
+    color: #3498db;
+}
+
+.footer-entrada{
+    color: #3498db !important;
+}
+
+.keyWords-ground :hover{
+    background-color: white !important;
+    border-color: #3498db !important; 
+}
+
+.post .post-tags .tag {
+    padding: 5px 25px;
+    border: 1px solid #ddd;
+    margin: 5px;
+    color: #3498db !important; 
+    font-size: 0.75em;
+    text-transform: uppercase;
+    font-weight: 600;
+    text-decoration: none;
+    border-radius: 50px;
+}
+
+.category :hover{
+    color: #3498db;
+}

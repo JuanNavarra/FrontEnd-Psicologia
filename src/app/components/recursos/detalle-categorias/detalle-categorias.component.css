@@ -1,8 +1,30 @@
 .seguir-leyendo{
-    color: tomato;
+    color: #2874a6;
 }
 .seguir-leyendo:hover{
-    background-color: tomato;
+    background-color: #2874a6;
     color: white;
     border-radius: 5%;
+}
+
+.badge-light{
+    background-color: #2874a6 !important;
+    color: white;
+    font-size: 16px;
+}
+
+.titulo{
+    color: #2874a6;
+}
+.subtitulo{
+    color: #3498db;
+}
+.category :hover{
+    color: #3498db;
+}
+.category{
+    color: gray;
+}
+.date{
+    color: #3498db !important;
 }

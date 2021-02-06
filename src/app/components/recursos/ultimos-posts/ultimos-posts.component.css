@@ -1,0 +1,18 @@
+.btn-last-post{
+    width: 100%;
+    border: white;
+    background-color: white;
+}
+
+.btn-last-post :hover{
+    border: white;
+    background-color:#f2f4f4 !important;
+}
+
+.title{
+    color:#2874a6 !important;
+}
+
+.comments{
+    color: #3498db !important;    
+}
