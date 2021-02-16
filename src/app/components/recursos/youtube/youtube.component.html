@@ -1,0 +1,52 @@
+<div class="container-fluid">
+    <div class="row">
+        <!-- Latest Posts -->
+        <main class="posts-listing col-lg-8">
+            <div class="container">
+                <div class="row" *ngFor="let entrada of entradas | paginate: { itemsPerPage: 3, currentPage: page }">
+                    <!-- post -->
+                    <section class="featured-posts no-padding-top">
+                        <div class="container">
+                            <div class="row d-flex align-items-stretch">
+                                <div class="text col-lg-5" style="max-height: 394px">
+                                    <div class="text-inner d-flex align-items-center">
+                                        <div class="content">
+                                            <header class="post-header">
+                                                <div class="category"><a
+                                                        *ngFor="let kw of entrada.keyWords">#{{kw.nombre}}</a></div>
+                                                <h4 class="">{{entrada.titulo}}</h4>
+                                            </header>
+                                            <p>{{entrada.descripcion}}</p>
+                                            <footer class="post-footer d-flex align-items-center"><a href="#"
+                                                    class="author d-flex align-items-center flex-wrap">
+                                                    <div class="avatar"><img *ngIf="entrada.imagenCreador != null"
+                                                            src="{{entrada.imagenCreador}}" class="img-fluid"></div>
+                                                    <div class="title"><span>{{entrada.creador}}</span></div>
+                                                </a>
+                                                <div class="date">{{entrada.fechaCreacion | date:'mediumDate'}}</div>
+                                                <div class="comments"><i class="icon-comment"></i>12</div>
+                                            </footer>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="image col-lg-7 ex3">
+                                    <youtube-player [videoId]="entrada.idVideo" suggestedQuality="highres"
+                                        [height]="392" [width]="500">
+                                    </youtube-player>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+                <pagination-controls (pageChange)="page = $event" responsive="true" previousLabel="Anterior"
+                    nextLabel="Siguiente">
+                </pagination-controls>
+            </div>
+        </main>
+        <aside class="col-lg-4 bottomMenu">
+            <app-busqueda></app-busqueda>
+            <app-ultimos-posts></app-ultimos-posts>
+            <app-categorias></app-categorias>
+        </aside>
+    </div>
+</div>

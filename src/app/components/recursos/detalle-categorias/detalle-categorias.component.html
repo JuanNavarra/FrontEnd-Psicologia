@@ -15,8 +15,9 @@
                                 <h1 class="h4 titulo">{{categoria.titulo}}</h1>
                                 <p class="subtitulo">{{categoria.subTitulo}}</p>
                             </header>
-                            <p [innerHTML]="categoria.descripcion">{{categoria.descripcion}}... <a class="seguir-leyendo"
-                                    [routerLink]="['/blog/entrada',categoria.slug]">Seguir leyendo</a></p>
+                            <p [innerHTML]="categoria.descripcion">{{categoria.descripcion}}</p>
+                            <a class="seguir-leyendo" [routerLink]="['/blog/entrada',categoria.slug]">Seguir
+                                leyendo</a>
                             <footer class="post-footer d-flex align-items-center"><a href="#"
                                     class="author d-flex align-items-center flex-wrap">
                                     <div class="avatar"><img src="{{categoria.imagenCreador}}" alt="..."
@@ -25,9 +26,9 @@
                                 </a>
                                 <div class="date"><i class="icon-clock"></i> {{categoria.fechaCreacion |
                                     date:'mediumDate'}}</div>
-                                </footer>
-                                <div class="category"><a *ngFor="let i of categoria.keyWords">#{{i.nombre}}</a>
-                                </div>
+                            </footer>
+                            <div class="category"><a *ngFor="let i of categoria.keyWords">#{{i.nombre}}</a>
+                            </div>
                         </div>
                     </div>
                 </div>

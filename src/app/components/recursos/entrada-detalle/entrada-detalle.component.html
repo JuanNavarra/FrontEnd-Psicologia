@@ -4,19 +4,27 @@
             <div class="container">
                 <div class="post-single">
                     <div class="post-thumbnail" *ngIf="entrada.imagenPost != null">
-                        <img [src]="createImgPath(entrada.imagenPost)" alt="..." class="img-fluid"></div>
+                        <img *ngIf="entrada.tipo == 'PO' " [src]="createImgPath(entrada.imagenPost)"
+                            class="img-fluid">
+                        <youtube-player *ngIf="entrada.tipo == 'YO' "
+                            [videoId]="entrada.idVideo" 
+                            suggestedQuality="highres" 
+                            [height]="400"
+                            [width]="700">
+                        </youtube-player>
+                    </div>
                     <div class="post-details">
                         <span class="badge badge-pill badge-light">
                             <h6 class="categoria-entrada">Categoría de: {{entrada.categoria}}</h6>
                         </span>
                         <div class="post-meta d-flex justify-content-between">
-                            <div class="category"><a *ngFor="let kw of entrada.keyWords"
-                                    class="tag">#{{kw.nombre}}</a></div>
+                            <div class="category"><a *ngFor="let kw of entrada.keyWords" class="tag">#{{kw.nombre}}</a>
+                            </div>
                         </div>
                         <h1 class="title-entrada">{{entrada.titulo}}</h1>
                         <div class="post-footer d-flex align-items-center flex-column flex-sm-row"><a href="#"
                                 class="author d-flex align-items-center flex-wrap">
-                                <div class="avatar"><img src="{{entrada.imagenCreador}}" alt="..." class="img-fluid">
+                                <div class="avatar"><img src="{{entrada.imagenCreador}}" class="img-fluid">
                                 </div>
                                 <div class="title"><span>{{entrada.creador}}</span></div>
                             </a>
@@ -46,18 +54,13 @@
                     </a>
                 </div>
             </div>
-            <app-comentarios 
-                [comentarios]="comentarios" 
-                [slug]="slug">
+            <app-comentarios [comentarios]="comentarios" [slug]="slug">
             </app-comentarios>
         </main>
         <aside class="col-lg-4">
-            <app-busqueda 
-                (slug)="recibeEntrada($event)">
+            <app-busqueda (slug)="recibeEntrada($event)">
             </app-busqueda>
-            <app-ultimos-posts 
-                (slug)="recibeEntrada($event)" 
-                (slug)="recibirComentarios($event)">
+            <app-ultimos-posts (slug)="recibeEntrada($event)" (slug)="recibirComentarios($event)">
             </app-ultimos-posts>
             <app-categorias></app-categorias>
         </aside>

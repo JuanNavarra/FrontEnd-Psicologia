@@ -21,6 +21,8 @@ import { CategoriasComponent } from './components/recursos/categorias/categorias
 import { DetalleCategoriasComponent } from './components/recursos/detalle-categorias/detalle-categorias.component';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { NotFoundComponent } from './components/not-found/not-found.component';
+import { YouTubePlayerModule } from "@angular/youtube-player";
+import { YoutubeComponent } from './components/recursos/youtube/youtube.component';
 
 
 @NgModule({
@@ -37,7 +39,8 @@ import { NotFoundComponent } from './components/not-found/not-found.component';
     FaqsComponent,
     CategoriasComponent,
     DetalleCategoriasComponent,
-    NotFoundComponent
+    NotFoundComponent,
+    YoutubeComponent
   ],
   imports: [
     BrowserModule,
@@ -48,6 +51,7 @@ import { NotFoundComponent } from './components/not-found/not-found.component';
     FormsModule,
     BrowserAnimationsModule,
     ToastrModule.forRoot(),
+    YouTubePlayerModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

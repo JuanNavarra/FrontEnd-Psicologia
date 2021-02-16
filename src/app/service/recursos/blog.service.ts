@@ -15,6 +15,7 @@ import { ErrorHttpCliente } from 'src/app/models/errorHttpCliente';
 export class BlogService {
 
   private url: string = "https://localhost:44329/api/blog/";
+  estado: boolean = true;
   httpOptions = {
     headers: {
       'Content-Type': 'application/json'
@@ -24,12 +25,12 @@ export class BlogService {
   constructor(private http: HttpClient) { }
 
   public obtenerEntradas(): Observable<Entradas[]> {
-    return this.http.get<Entradas[]>(`${this.url}blogs-psicologia`);
+    return this.http.get<Entradas[]>(`${this.url}blogs-psicologia/${this.estado}`);
   }
 
   public obtenerEntradaPorSlug(slug: string): Observable<Entradas> {
     return this.http
-      .get<Entradas>(`${this.url}blog-entrada/${slug}`)
+      .get<Entradas>(`${this.url}blog-entrada/${slug}/${this.estado}`)
       .pipe(
         catchError(error => {
           let errorMsg: ErrorHttpCliente = new ErrorHttpCliente();
@@ -49,7 +50,7 @@ export class BlogService {
 
   public listarComentarios(slug: string): Observable<Comentarios[]> {
     return this.http
-      .get<Comentarios[]>(`${this.url}comentarios-post/${slug}`)
+      .get<Comentarios[]>(`${this.url}comentarios-mostrar/${slug}`)
       .pipe(
         catchError(error => {
           let errorMsg: ErrorHttpCliente = new ErrorHttpCliente();
@@ -87,7 +88,7 @@ export class BlogService {
   }
 
   public listarCategoriaDetalle(categoria: string): Observable<Entradas[]> {
-    return this.http.get<Entradas[]>(`${this.url}listar-detalle-categorias/${categoria}`)
+    return this.http.get<Entradas[]>(`${this.url}listar-detalle-categorias/${categoria}/${this.estado}`)
   }
 
   private getServerErrorMessage(error: HttpErrorResponse): ErrorHttpCliente {

@@ -6,7 +6,9 @@
         <a [routerLink]="['/blog/entrada',reciente.slug]" (click)="obtenerSlugPost(reciente.slug)" class="btn-last-post">
             <div class="item d-flex align-items-center">
                 <div class="image">
-                    <img [src]="createImgPath(reciente.imagen)" alt="..." class="img-fluid"></div>
+                    <img *ngIf="reciente.tipo == 'PO'" [src]="createImgPath(reciente.imagen)" class="img-fluid">
+                    <img *ngIf="reciente.tipo == 'YO'" src="/assets/images/YouTube.jpg" class="img-fluid">
+                </div>
                 <div class="title"><strong>{{reciente.titulo}}</strong>
                     <div class="d-flex align-items-center">
                         <div class="comments">{{reciente.fechaCreacion | date: 'mediumDate'}}</div>
