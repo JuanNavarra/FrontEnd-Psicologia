@@ -12,6 +12,11 @@
                             [height]="400"
                             [width]="700">
                         </youtube-player>
+                        <div *ngIf="entrada.tipo == 'PC'" class="audio">
+                            <audio controls>
+                                <source [src]="createImgPath(entrada.imagenPost)" type="audio/mpeg">
+                            </audio>
+                        </div>
                     </div>
                     <div class="post-details">
                         <span class="badge badge-pill badge-light">
@@ -47,9 +52,19 @@
                     </div>
                 </div>
                 <div class="posts-nav d-flex justify-content-between align-items-stretch flex-column flex-md-row">
-                    <a routerLink="/blog" class="prev-post text-left d-flex align-items-center">
+                    <a *ngIf="entrada.tipo == 'PO'" routerLink="/blog" class="prev-post text-left d-flex align-items-center">
                         <div class="text"><strong class="text-primary">
                                 <h6 class="footer-entrada">Quiero ver todos los posts.</h6>
+                            </strong></div>
+                    </a>
+                    <a *ngIf="entrada.tipo == 'YO'" routerLink="/videos-youtube" class="prev-post text-left d-flex align-items-center">
+                        <div class="text"><strong class="text-primary">
+                                <h6 class="footer-entrada">Quiero ver todos los videos.</h6>
+                            </strong></div>
+                    </a>
+                    <a *ngIf="entrada.tipo == 'PC'" routerLink="/podcasts" class="prev-post text-left d-flex align-items-center">
+                        <div class="text"><strong class="text-primary">
+                                <h6 class="footer-entrada">Quiero ver todos los podcast.</h6>
                             </strong></div>
                     </a>
                 </div>

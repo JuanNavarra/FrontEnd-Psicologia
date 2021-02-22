@@ -1,6 +1,7 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { Recientes } from 'src/app/models/recientes';
 import { BlogService } from 'src/app/service/recursos/blog.service';
+import { faPlayCircle } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-ultimos-posts',
@@ -9,6 +10,7 @@ import { BlogService } from 'src/app/service/recursos/blog.service';
 })
 export class UltimosPostsComponent implements OnInit {
 
+  faPlayCircle = faPlayCircle;
   recientes: Recientes[] = [];
   @Output() slug = new EventEmitter<string>();
   constructor(private blogService: BlogService) { }

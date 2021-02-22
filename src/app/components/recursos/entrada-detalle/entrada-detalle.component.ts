@@ -29,8 +29,9 @@ export class EntradaDetalleComponent implements OnInit {
   ngOnInit(): void {
     this.titulo.setTitle('EPSP | POSTS');
     this.recibeEntrada(this.slug);
+    
   }
-
+  
   recibeEntrada(slug: string): void {
     this.blogService.obtenerEntradaPorSlug(slug).subscribe(data => {
       this.entrada = data

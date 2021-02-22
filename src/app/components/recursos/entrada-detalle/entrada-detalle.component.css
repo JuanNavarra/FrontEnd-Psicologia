@@ -39,3 +39,12 @@
 .category :hover{
     color: #3498db;
 }
+
+audio
+{
+    width: 100% !important;
+}
+
+.audio{    
+    margin-bottom: 3%;
+}

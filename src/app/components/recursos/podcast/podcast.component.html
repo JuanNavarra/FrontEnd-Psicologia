@@ -1,33 +1,40 @@
 <div class="container-fluid">
     <div class="row">
-        <!-- Latest Posts -->
         <main class="posts-listing col-lg-8">
             <div class="container">
                 <div class="row">
-                    <!-- post -->
                     <div class="post col-xl-6"
                         *ngFor="let entrada of entradas | paginate: { itemsPerPage: 6, currentPage: page }">
                         <a [routerLink]="['/blog/entrada',entrada.slug]">
-                            <div class="post-thumbnail">
-                                <img *ngIf="entrada.imagenPost != null" [src]="createImgPath(entrada.imagenPost)"
-                                    class="img-fluid">
-                            </div>
                             <div class="post-details">
+                                <div class="row">
+                                    <div style="margin-right: 2%; color: #2874a6;">
+                                        <fa-icon [icon]="faPlayCircle" size="2x"></fa-icon>
+                                    </div>
+                                    <div style="margin-top: 1%;">
+                                        <h5><span class="badge badge-light">Podcast</span></h5>
+                                    </div>
+                                </div>
                                 <div class="post-meta d-flex justify-content-between footer-entrada">
-                                    <div class="date meta-last footer-entrada">{{entrada.fechaCreacion |
+                                    <div class="date meta-last footer-entrada">{{entrada.fechacreacion |
                                         date:'mediumDate'}}</div>
                                     <div class="category">
                                         <a *ngFor="let kw of entrada.keyWords">#{{kw.nombre}}</a>
                                     </div>
-                                </div><h3 class="h4">{{entrada.titulo}}</h3>
-                                <p class="text-muted">{{entrada.subTitulo}}</p>
+                                </div><a>
+                                    <h3 class="h4">{{entrada.titulo}}</h3>
+                                </a>
+                                <p class="text-muted">{{entrada.subtitulo}}</p>
+                                <hr>
                                 <footer class="post-footer d-flex align-items-center"><a href="#"
                                         class="author d-flex align-items-center flex-wrap">
                                         <div class="avatar"><img *ngIf="entrada.imagenCreador != null"
-                                                src="{{entrada.imagenCreador}}" class="img-fluid"></div>
+                                                src="{{entrada.imagenCreador}}" class="img-fluid" style="height: 100%;">
+                                        </div>
                                         <div class="title"><span>{{entrada.creador}}</span></div>
                                     </a>
                                     <div class="date">{{entrada.categoria}}</div>
+                                    <div class="date">3 mins.</div>
                                 </footer>
                             </div>
                         </a>
