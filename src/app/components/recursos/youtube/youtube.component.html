@@ -5,12 +5,12 @@
             <div class="container">
                 <div class="row" *ngFor="let entrada of entradas | paginate: { itemsPerPage: 3, currentPage: page }">
                     <!-- post -->
-                    <a [routerLink]="['/blog/entrada',entrada.slug]">
-                        <section class="featured-posts no-padding-top">
-                            <div class="container">
-                                <div class="row d-flex align-items-stretch">
-                                    <div class="text col-lg-5" style="max-height: 394px">
-                                        <div class="text-inner d-flex align-items-center">
+                    <section class="featured-posts no-padding-top">
+                        <div class="container">
+                            <div class="row d-flex align-items-stretch">
+                                <div class="text col-lg-5" style="max-height: 394px">
+                                    <div class="text-inner d-flex align-items-center">
+                                        <a [routerLink]="['/blog/entrada',entrada.slug]">
                                             <div class="content">
                                                 <header class="post-header">
                                                     <div class="category"><a
@@ -29,17 +29,17 @@
                                                     <div class="comments"><i class="icon-comment"></i>12</div>
                                                 </footer>
                                             </div>
-                                        </div>
-                                    </div>
-                                    <div class="image col-lg-7 ex3">
-                                        <youtube-player [videoId]="entrada.idVideo" suggestedQuality="highres"
-                                            [height]="392" [width]="500">
-                                        </youtube-player>
+                                        </a>
                                     </div>
                                 </div>
+                                <div class="image col-lg-7 ex3">
+                                    <youtube-player [videoId]="entrada.idVideo" suggestedQuality="highres"
+                                        [height]="392" [width]="500">
+                                    </youtube-player>
+                                </div>
                             </div>
-                        </section>
-                    </a>
+                        </div>
+                    </section>
                 </div>
                 <pagination-controls (pageChange)="page = $event" responsive="true" previousLabel="Anterior"
                     nextLabel="Siguiente">

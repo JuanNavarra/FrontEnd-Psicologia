@@ -14,7 +14,7 @@ import { ErrorHttpCliente } from 'src/app/models/errorHttpCliente';
 })
 export class BlogService {
 
-  private url: string = "https://localhost:44329/api/blog/";
+  private url: string = "http://localhost:8090/api/blog/";
   estado: boolean = true;
   httpOptions = {
     headers: {
@@ -44,8 +44,8 @@ export class BlogService {
       );
   }
 
-  public obtenerRecientes(): Observable<Recientes[]> {
-    return this.http.get<Recientes[]>(`${this.url}ultimos-post`)
+  public obtenerRecientes(page?: string): Observable<Recientes[]> {
+    return this.http.get<Recientes[]>(`${this.url}ultimos-post/${page}`)
   }
 
   public listarComentarios(slug: string): Observable<Comentarios[]> {

@@ -8,7 +8,7 @@ import { IPodcast } from 'src/app/models/ipodcast';
 })
 export class PodcastService {
 
-	private url: string = "https://localhost:44329/api/podcast/";
+	private url: string = "http://localhost:8090/api/podcast/";
 	estado: boolean = true;
 
 	constructor(private http: HttpClient) { }

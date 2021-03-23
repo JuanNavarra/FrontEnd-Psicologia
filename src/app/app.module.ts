@@ -26,7 +26,6 @@ import { YoutubeComponent } from './components/recursos/youtube/youtube.componen
 import { PodcastComponent } from './components/recursos/podcast/podcast.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
-
 @NgModule({
   declarations: [
     AppComponent,

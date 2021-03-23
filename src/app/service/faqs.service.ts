@@ -8,7 +8,7 @@ import { Faqs } from '../models/faqs';
 })
 export class FaqsService {
   
-  private url: string = "https://localhost:44329/api/Principal/";
+  private url: string = "http://localhost:8090/api/Principal/";
   
   constructor(private http: HttpClient) { }
 

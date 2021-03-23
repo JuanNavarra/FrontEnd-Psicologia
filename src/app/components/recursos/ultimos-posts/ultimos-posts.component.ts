@@ -26,6 +26,6 @@ export class UltimosPostsComponent implements OnInit {
   }
 
   public createImgPath = (serverPath: string) => {
-    return `https://localhost:44329/${serverPath}`;
+    return `http://localhost:8090/${serverPath}`;
   }
 }

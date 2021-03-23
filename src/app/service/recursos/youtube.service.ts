@@ -8,7 +8,7 @@ import { IYoutube } from 'src/app/models/iyoutube';
 })
 export class YoutubeService {
 
-  private url: string = "https://localhost:44329/api/youtube/";
+  private url: string = "http://localhost:8090/api/youtube/";
   private estado: boolean = true;
 
   constructor(private http: HttpClient) { }

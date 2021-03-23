@@ -1,3 +1,110 @@
-<div class="container">
-    <h1 style="text-align: center;">EN CONSTRUCCION</h1>
-</div>
+<!-- Hero Section-->
+<section [ngStyle]="{backgroundImage:'url('+ createMultimediaPath('Resources/Images/'+principal.rutaImagen) +')'}"
+    style="background-size: cover; background-position: center center"
+    class="hero">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-7">
+                <h1>{{principal.texto}}</h1>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Intro Section-->
+<section class="intro">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8">
+                <p [innerHTML]="principal.descripcion">{{principal.descripcion}}</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Latest Posts -->
+<section class="latest-posts">
+    <div class="container">
+        <header>
+            <h2>Ultimas entradas del blog</h2>
+            <p class="text-big">Ultimas cinco entradas para que veas un poco <br>de nuestro contenido mas reciente</p>
+        </header>
+        <div class="row">
+            <div *ngFor="let i of recientes" class="post col-md-4">
+                <a [routerLink]="['/blog/entrada',i.slug]">
+                    <div class="post-thumbnail">
+                        <img *ngIf="i.tipo == 'PO'" [src]="createMultimediaPath(i.imagen)" class="img-fluid">
+                        <div *ngIf="i.tipo == 'PC'" class="col-md-1" style="color: #2874a6;">
+                            <fa-icon [icon]="faPlayCircle" style="margin-left: -8px;" size="6x"></fa-icon>
+                        </div>
+                    </div>
+                    <div class="post-details">
+                        <div class="post-meta d-flex justify-content-between">
+                            <div class="date">{{i.fechaCreacion | date: 'mediumDate'}}</div>
+                            <div class="date">{{i.categoria }}</div>
+                        </div>
+                        <h3 class="h4">{{i.titulo}}</h3>
+                        <p [innerHTML]="i.descripcion" class="text-muted">{{i.descripcion}}</p>
+                        <div class="category">
+                            <a *ngFor="let kw of i.keyWords">#{{kw.nombre}}</a>
+                        </div>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Gallery Section-->
+<section class="latest-posts">
+    <div class="container">
+        <header>
+            <h2>Ultimos videos montados</h2>
+            <p class="text-big">Te mostramos los videos de youtube <br>mas recientes de nuestro blog</p>
+        </header>
+        <div class="row">
+            <div *ngFor="let i of recientesYoutube" class="mix col-lg-3 col-md-3 col-sm-6">
+                <div class="item">
+                    <a data-fancybox="gallery" href="{{i.imagen}}"><img class="img-youtube"
+                            src="/assets/images/youtube.png">
+                        <div class="overlay d-flex align-items-center justify-content-center"><i
+                                class="icon-search"></i>
+                        </div>
+                    </a>
+                </div>
+                <div class="post-details">
+                    <div class="post-meta d-flex justify-content-between">
+                        <div class="date">{{i.fechaCreacion | date: 'mediumDate'}}</div>
+                        <div class="date">{{i.categoria }}</div>
+                    </div>
+                    <h3 class="h4">{{i.titulo}}</h3>
+                    <div class="category">
+                        <a *ngFor="let kw of i.keyWords">#{{kw.nombre}}</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Newsletter Section-->
+<section class="newsletter no-padding-top">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6">
+                <h2>Subscribete a nuestro Newsletter</h2>
+                <p class="text-big">Al subscribirte a nuestro Newsletter podrás recibir notificaciones cada vez que publiquemos contenido.</p>
+            </div>
+            <div class="col-md-8">
+                <div class="form-holder">
+                    <form action="#">
+                        <div class="form-group">
+                            <input type="email" name="email" id="email" placeholder="Escribe tu direccion de email">
+                            <button type="submit" class="submit">Subscribete</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
